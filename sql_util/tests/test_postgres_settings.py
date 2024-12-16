@@ -2,7 +2,7 @@ BACKEND = 'postgres'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sqlutil',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
