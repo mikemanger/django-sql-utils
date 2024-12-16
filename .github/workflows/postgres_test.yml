@@ -12,17 +12,17 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [ 3.8, 3.9, 3.10.13, 3.11 ]
-        django-version: [ 3.2.21, 4.1.11, 4.2.5 ]
+        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13' ]
+        django-version: [ 4.2.17, 5.0.10, 5.1.4 ]
         exclude:
-          - python-version: 3.8
-            django-version: 4.1.11
-          - python-version: 3.8
-            django-version: 4.2.5
-          - python-version: 3.11
-            django-version: 3.2.21
-          - python-version: 3.11
-            django-version: 4.1.11
+          - python-version: '3.9'
+            django-version: 5.0.10
+          - python-version: '3.9'
+            django-version: 5.1.4
+          - python-version: '3.13'
+            django-version: 4.2.17
+          - python-version: '3.13'
+            django-version: 5.0.10
     services:
       postgres:
         image: postgres
