@@ -13,7 +13,7 @@ class TestParentChild(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestParentChild, cls).setUpClass()
+        super().setUpClass()
         parents = [
             Parent.objects.create(name='John'),
             Parent.objects.create(name='Jane')
@@ -96,7 +96,7 @@ class TestManyToMany(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestManyToMany, cls).setUpClass()
+        super().setUpClass()
         publishers = [
             Publisher.objects.create(name='Publisher 1', number=1),
             Publisher.objects.create(name='Publisher 2', number=2)
@@ -220,7 +220,7 @@ class TestManyToMany(TestCase):
 class TestForeignKey(TestCase):
     @classmethod
     def setUpClass(cls):
-        super(TestForeignKey, cls).setUpClass()
+        super().setUpClass()
         publishers = [
             Publisher.objects.create(name='Publisher 1', number=1),
             Publisher.objects.create(name='Publisher 2', number=2)
@@ -271,7 +271,7 @@ class TestReverseForeignKey(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestReverseForeignKey, cls).setUpClass()
+        super().setUpClass()
         catalogs = [
             Catalog.objects.create(number='A'),
             Catalog.objects.create(number='B')
@@ -366,7 +366,7 @@ class TestForeignKeyToField(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestForeignKeyToField, cls).setUpClass()
+        super().setUpClass()
         brand = Brand.objects.create(name='Python', company_id=1337)
         products = [
             Product.objects.create(brand=brand, num_purchases=1),
@@ -384,7 +384,7 @@ class TestMultipleForeignKeyToTheSameModel(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestMultipleForeignKeyToTheSameModel, cls).setUpClass()
+        super().setUpClass()
 
         player1 = Player.objects.create(nickname='Player 1')
         player2 = Player.objects.create(nickname='Player 2')

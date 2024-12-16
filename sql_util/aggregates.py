@@ -9,7 +9,7 @@ class Subquery(DjangoSubquery):
         if isinstance(queryset_or_expression, QuerySet):
             self.queryset = queryset_or_expression
             self.query = self.queryset.query
-            super(Subquery, self).__init__(queryset_or_expression, **extra)
+            super().__init__(queryset_or_expression, **extra)
         else:
             expression = queryset_or_expression
             if not hasattr(expression, 'resolve_expression'):
@@ -34,7 +34,7 @@ class Subquery(DjangoSubquery):
             queryset = self.get_queryset(query.clone(), True, reuse, summarize)
             self.queryset = queryset
             self.query = queryset.query
-        return super(Subquery, self).resolve_expression(query, allow_joins, reuse, summarize, for_save)
+        return super().resolve_expression(query, allow_joins, reuse, summarize, for_save)
 
     def get_queryset(self, query, allow_joins, reuse, summarize):
         # This is a customization hook for child classes to override the base queryset computed automatically
@@ -144,7 +144,7 @@ class SubqueryAggregate(Subquery):
         self.ordering = extra.pop('ordering', None)
         assert self.aggregate is not None, "Error: Attempt to instantiate a " \
                                            "SubqueryAggregate with no aggregate function"
-        super(SubqueryAggregate, self).__init__(*args, **extra)
+        super().__init__(*args, **extra)
 
     def get_queryset(self, query, allow_joins, reuse, summarize):
         queryset = self._get_base_queryset(query, allow_joins, reuse, summarize)
@@ -207,7 +207,7 @@ class SubqueryCount(SubqueryAggregate):
 
     def __init__(self, expression, reverse='', *args, **kwargs):
         kwargs['output_field'] = kwargs.get('output_field', IntegerField())
-        super(SubqueryCount, self).__init__(expression, reverse=reverse, *args, **kwargs)
+        super().__init__(expression, reverse=reverse, *args, **kwargs)
 
 
 class SubqueryMin(SubqueryAggregate):
@@ -236,7 +236,7 @@ class Exists(Subquery):
 
     def __init__(self, *args, **kwargs):
         self.negated = kwargs.pop('negated', False)
-        super(Exists, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.output_field = BooleanField()
 
     def __invert__(self):
@@ -244,7 +244,7 @@ class Exists(Subquery):
         return type(self)(self.queryset if self.queryset is not None else self.expression, negated=(not self.negated), **self.extra)
 
     def as_sql(self, compiler, connection, template=None, **extra_context):
-        sql, params = super(Exists, self).as_sql(compiler, connection, template, **extra_context)
+        sql, params = super().as_sql(compiler, connection, template, **extra_context)
         if self.negated:
             sql = 'NOT {}'.format(sql)
         return sql, params

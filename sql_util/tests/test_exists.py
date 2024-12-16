@@ -10,7 +10,7 @@ class TestExists(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestExists, cls).setUpClass()
+        super().setUpClass()
 
         parents = [
             Parent.objects.create(name='John'),
@@ -55,7 +55,7 @@ class TestExists(TestCase):
 class TestExistsFilter(TestCase):
     @classmethod
     def setUpClass(cls):
-        super(TestExistsFilter, cls).setUpClass()
+        super().setUpClass()
         publishers = [
             Publisher.objects.create(name='Publisher 1', number=1),
             Publisher.objects.create(name='Publisher 2', number=2)
@@ -113,7 +113,7 @@ class TestManyToManyExists(TestCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestManyToManyExists, cls).setUpClass()
+        super().setUpClass()
         publishers = [
             Publisher.objects.create(name='Publisher 1', number=1),
             Publisher.objects.create(name='Publisher 2', number=2)
@@ -219,7 +219,7 @@ class TestManyToManyExists(TestCase):
 class TestExistsReverseNames(TestCase):
     @classmethod
     def setUpClass(cls):
-        super(TestExistsReverseNames, cls).setUpClass()
+        super().setUpClass()
         categories = [
             Category.objects.create(name='cat one'),
             Category.objects.create(name='cat two'),
@@ -292,7 +292,7 @@ class TestExistsReverseNames(TestCase):
 class TestGenericForeignKey(TestCase):
     @classmethod
     def setUpClass(cls):
-        super(TestGenericForeignKey, cls).setUpClass()
+        super().setUpClass()
         dogs = [
             Dog.objects.create(name="Fido"),
             Dog.objects.create(name="Snoopy"),
